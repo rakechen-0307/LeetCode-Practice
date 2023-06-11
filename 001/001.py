@@ -13,15 +13,15 @@ class Solution:
         # operating with set
         # trick : since there is exactly one solution, so check the case of elem == target/2 in the last
         for elem in set_nums :
-            if ((target - elem in set_nums) and (elem != target/2)) :
-                [num1, num2] = self.Find_Index(nums, elem, target-elem)
+            if ((target - elem in set_nums) and (elem != target / 2)) :
+                [num1, num2] = self.FindIndex(nums, elem, target - elem)
                 return [num1, num2]
         
-        [num1, num2] = self.Find_Index(nums, target/2, target/2)
+        [num1, num2] = self.FindIndex(nums, target / 2, target / 2)
         return [num1, num2]
 
     # function for finding index of the two elements
-    def Find_Index(self, arr, elem1, elem2) :
+    def FindIndex(self, arr, elem1, elem2) :
         i = 0
         while i < len(arr) :
             if (arr[i] == elem1) :
@@ -39,4 +39,4 @@ class Solution:
                 num2 = i
                 return [num1, num2]
             i += 1
-        return 0
+        return [-1, -1]
