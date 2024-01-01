@@ -1,42 +1,14 @@
 class Solution:
-    def twoSum(self, nums, target) :
+    def twoSum(self, nums, target: int):
 
-        ''' 
-            Input : nums -> List[int], target -> int
-            Output : List[int]
-            Hint : using set(hash table). Lookup of a set has O(1) time complexity
-        ''' 
+        ## Input:
+        # nums: List[int], target: int
+        ## Output:
+        # List[int]
 
-        # convert nums array to set
-        set_nums = set(nums)
-
-        # operating with set
-        # trick : since there is exactly one solution, so check the case of elem == target/2 in the last
-        for elem in set_nums :
-            if ((target - elem in set_nums) and (elem != target / 2)) :
-                [num1, num2] = self.FindIndex(nums, elem, target - elem)
-                return [num1, num2]
-        
-        [num1, num2] = self.FindIndex(nums, target / 2, target / 2)
-        return [num1, num2]
-
-    # function for finding index of the two elements
-    def FindIndex(self, arr, elem1, elem2) :
-        i = 0
-        while i < len(arr) :
-            if (arr[i] == elem1) :
-                num1 = i
-                i += 1
-                while (arr[i] != elem2) :
-                    i += 1
-                num2 = i
-                return [num1, num2]
-            elif (arr[i] == elem2) :
-                num1 = i
-                i += 1
-                while (arr[i] != elem1) :
-                    i += 1
-                num2 = i
-                return [num1, num2]
-            i += 1
-        return [-1, -1]
+        index = {}
+        for i in range(len(nums)):
+            if (target - nums[i] in index):
+                return [index[target - nums[i]], i]
+                
+            index[nums[i]] = i
